@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+*{margin:0;padding:0;}
+body{font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Helvetica,Arial,sans-serif;}
+li{list-style-type:none}
+a:link,a:visited{color:#0000EE;outline: none;}
+.clear{clear:both;}
+.e_msg{color:red;}
+#reg{margin:20px;}
+#p_strength_bk span{padding:2px 20px;height:15px;margin-right:2px;font-size:12px;}
+.grey{background-color:#d3d3d3;}
+.green{background-color:lightgreen;}
+.out_box{border: 1px solid #ccc;background: #fff;font:12px;color:#666;}
+.list_box{line-height:22px;cursor:pointer;padding:0 5px;}
+.focus_box{line-height:22px;cursor: pointer;background: #69C;color:#FFF;padding:0 5px;}
+.mark_box{font-weight:bold;}
+#header{height:38px;background-color:black;color:white;line-height:38px;}
+#h_content,#content{width:980px;margin:0 auto;}
+#logo, #h_op li{float:left;font-size:15px;}
+#logo a{color: white;text-decoration: none;}
+#h_op{float:right;}
+#h_op li a{display:block;font-size:13px;color:white;height:40px;padding:0 5px;text-decoration:none;}
+.c_main{margin-top:20px;}
+.n_bk{height: 50px;line-height: 50px;border-bottom: 1px dotted #d3d3d3}
