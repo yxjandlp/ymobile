@@ -65,7 +65,7 @@ class ApiCode
 	CONST REGISTER_NICKNAME_LENGTH_TOO_LONG = 2004;
 	
 	/**
-	 * 昵称格式错误，需为昵1－16位的中英文、数字或_
+	 * 昵称格式错误，需为1－16位的中英文、数字或_
 	 */
 	const REGISTER_NICKNAME_ILLEGAL_FORMAT = 2005;
 	
