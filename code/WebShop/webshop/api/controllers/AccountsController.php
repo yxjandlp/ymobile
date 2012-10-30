@@ -1,6 +1,6 @@
 <?php
 /**
- * 帐号控制器
+ * 帐号处理接口
  * 
  * @author yaoxianjin
  * Date: 2012-10-29
@@ -15,7 +15,7 @@ class AccountsController extends ApiBaseController
 	{
  		$registerInfo = array(
 				'email' => $this->getEmail(),
-				'nickname' => $this->getNickname(),
+				'nickname' => $this->getNick(),
 				'password' => $this->getPassword()
 		);
     	if(ServiceFactory::getUserService()->addUser($registerInfo)){
@@ -24,19 +24,39 @@ class AccountsController extends ApiBaseController
 	}
 	
 	/**
+	 * 登录
+	 */
+	public function actionLogin()
+	{
+		$email = trim($this->getRequestParam('email'));
+		if($email == ''){
+			$this->returnErrorCode(ApiCode::REGISTER_EMAIL_CANNOT_LEAVE_EMPTY);
+		}
+		$password = $this->getRequestParam('password');
+		if($password == ''){
+			$this->returnErrorCode(ApiCode::REGISTER_PASSWORD_CANNOT_LEAVE_EMPTY);
+		}
+		$user = ServiceFactory::getUserService()->getUserByEmailPwd($email, $password);
+		if(! $user){
+			$this->returnErrorCode(ApiCode::LOGIN_WRONG_EMAIL_OR_PASSWORD);
+		}
+		$this->returnSuccessResponse(array('id'=>$user['id'], 'nickname'=>$user['nickname']));	
+	}
+	
+	/**
 	 * 验证email输入
 	 */
 	private function getEmail()
 	{
-		$email = $this->getRequestParam('email');
+		$email = trim($this->getRequestParam('email'));
 		if($email == ''){
-			return 'email不能为空';
+			$this->returnErrorCode(ApiCode::REGISTER_EMAIL_CANNOT_LEAVE_EMPTY);
 		}
 		if( ! StringUtils::isEmail($email) ){
-			return 'email格式错误';
+			$this->returnErrorCode(ApiCode::REGISTER_EMAIL_ILLEGAL_FORMAT);
 		}
 		if($this->isEmailUsed($email)){
-			return '该email已被注册';
+			$this->returnErrorCode(ApiCode::REGISTER_EMAIL_ALREADY_BEEN_USED);
 		}
 		return $email;
 	}
@@ -46,19 +66,19 @@ class AccountsController extends ApiBaseController
 	 */
  	private function getNick()
 	{
- 		$nickname = $this->getRequestParam('nickname');
+ 		$nickname = trim($this->getRequestParam('nickname'));
 		if($nickname == ''){
-			return '昵称不能为空';
+			$this->returnErrorCode(ApiCode::REGISTER_NICKNAME_CANNOT_LEAVE_EMPTY);
 		}
 		if(StringUtils::getRealLength($nickname) > 16){
-			return '昵称过长，最长为16位';
+			$this->returnErrorCode(ApiCode::REGISTER_NICKNAME_LENGTH_TOO_LONG);
 		}
 		$pattern = '/^[0-9a-zA-Z\\x80-\\xff_]*$/';
 		if( ! preg_match($pattern, $nickname) ){
-			return '昵称格式错误，需为昵1－16位的中英文、数字或_';
+			$this->returnErrorCode(ApiCode::REGISTER_NICKNAME_ILLEGAL_FORMAT);
 		}
 		if($this->isNicknameUsed($nickname)){
-			return '该昵称已被使用';
+			$this->returnErrorCode(ApiCode::REGISTER_NICKNAME_ALREADY_BEEN_USED);
 		}
 		return $nickname;
 	}
@@ -72,10 +92,10 @@ class AccountsController extends ApiBaseController
 	{
 		$password = $this->getRequestParam('password');
 		if($password == ''){
-			return '密码不能为空';
+			$this->returnErrorCode(ApiCode::REGISTER_PASSWORD_CANNOT_LEAVE_EMPTY);
 		}
 		if(strlen($password) < 6){
-			return '密码最少为6位';
+			$this->returnErrorCode(ApiCode::REGISTER_PASSWORD_LENGTH_TOO_SHORT);
 		}	
 		return $password;
 	}

@@ -36,11 +36,11 @@ class ApiBaseController extends BaseController
 	{
 		$checkTime = $this->getRequestParam('checktime');
 		if( $checkTime === null ){
-			$this->returnErrorCode(ErrorCode::API_MISSING_PARAM_CHECKTIME);
+			$this->returnErrorCode(ApiCode::API_MISSING_PARAM_CHECKTIME);
 		}
 		$apikey = $this->getRequestParam('apikey');
 		if( $apikey != md5( $checkTime . Constant::API_CHECK_KEY) ) {
-			$this->returnErrorCode(ErrorCode::API_KEY_VALIDATE_ERROR);
+			$this->returnErrorCode(ApiCode::API_KEY_VALIDATE_ERROR);
 		}	
 		$filterChain->run();
 	}
@@ -63,7 +63,7 @@ class ApiBaseController extends BaseController
 	 */
 	public function returnSuccessResponse($responseData = null) 
 	{
-		$result = array ("returncode" => Constant::API_OPERATE_SUCCESS);
+		$result = array ("returncode" => ApiCode::API_OPERATE_SUCCESS);
 		if ($responseData !== null) {
 			$result ['response'] = $responseData;
 		}

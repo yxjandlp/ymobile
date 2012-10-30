@@ -43,4 +43,15 @@ class UserService extends ActionService
 		$user['join_time'] = time();
 		return $user->save();
 	}
+	
+	/**
+	 * 根据邮箱和密码获取用户
+	 * 
+	 * @param string $email
+	 * @param string $password
+	 */
+	public function getUserByEmailPwd($email, $password)
+	{
+		return User::model()->find('email=:email and password=:password', array(':email'=>$email, 'password'=>sha1($password)));
+	}
 }
