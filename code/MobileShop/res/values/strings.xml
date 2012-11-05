@@ -8,4 +8,7 @@
 	
 	<!--activity test string  -->
 	<string name="title_activity_test">TestActivity</string>
+	
+	<!-- spalsh layout -->
+	<string name="splash_text">the most cool app</string>
 </resources>
