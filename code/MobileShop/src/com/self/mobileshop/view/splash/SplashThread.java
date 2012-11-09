@@ -1,4 +1,4 @@
-package com.self.mobileshop.splash;
+package com.self.mobileshop.view.splash;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;

@@ -1,7 +1,6 @@
-package com.self.mobileshop.splash;
+package com.self.mobileshop.view.splash;
 
-import com.self.mobileshop.MainActivity;
-import com.self.mobileshop.R;
+import com.self.mobileshop.view.main.MainActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +11,7 @@ import android.view.WindowManager;
 
 public class SplashActivity extends Activity{
 	
-	private SplashView spView ;
+	
 	private final static int GOMAIN = 2;
 	Handler mHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
@@ -35,10 +34,10 @@ public class SplashActivity extends Activity{
 	        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		int screenWidth = getWindowManager().getDefaultDisplay().getWidth();
 		int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
-		spView = new SplashView(getApplicationContext(),screenWidth, screenHeight,this);
+		SplashView spView ; spView = new SplashView(getApplicationContext(),screenWidth, screenHeight,this);
 		setContentView(spView);
 		
-		new Handler().postDelayed(new Runnable() {
+		mHandler.postDelayed(new Runnable() {
 			
 			public void run() {
 				// TODO Auto-generated method stub

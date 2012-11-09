@@ -1,4 +1,4 @@
-package com.self.mobileshop.splash;
+package com.self.mobileshop.view.splash;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -38,11 +38,12 @@ public class SplashView extends SurfaceView implements SurfaceHolder.Callback{
 		splashThread.flag = true;
 		if(!splashThread.isAlive()){
 			splashThread.start();
+			
 		}
 	}
 	
 	public void doDraw(Canvas canvas){
-		Paint paint = new Paint();	//´´½¨»­±Ê
+		Paint paint = new Paint();	
 		paint.setColor(Color.RED);
 		paint.setTextSize(textSize);
 		paint.setTypeface(Typeface.DEFAULT_BOLD);
