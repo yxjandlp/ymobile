@@ -18,6 +18,7 @@ public final class R {
         public static final int alpha=0x7f050002;
         public static final int black=0x7f050001;
         public static final int gray=0x7f050003;
+        public static final int light_red=0x7f050005;
         public static final int red=0x7f050004;
         public static final int white=0x7f050000;
     }
@@ -31,29 +32,34 @@ public final class R {
         public static final int composer_sun=0x7f020006;
         public static final int composer_thought=0x7f020007;
         public static final int composer_with=0x7f020008;
-        public static final int default_homebg=0x7f020009;
-        public static final int ic_action_search=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
+        public static final int ic_action_search=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int main_background=0x7f02000b;
+        public static final int main_titlebar_bg=0x7f02000c;
+        public static final int title_bar_button=0x7f02000d;
+        public static final int title_bar_button_normal=0x7f02000e;
+        public static final int title_bar_button_press=0x7f02000f;
     }
     public static final class id {
-        public static final int composer_button_music=0x7f090005;
-        public static final int composer_button_people=0x7f090003;
-        public static final int composer_button_photo=0x7f090002;
-        public static final int composer_button_place=0x7f090004;
-        public static final int composer_button_sleep=0x7f090007;
-        public static final int composer_button_thought=0x7f090006;
-        public static final int composer_buttons_show_hide_button=0x7f090008;
-        public static final int composer_buttons_show_hide_button_icon=0x7f090009;
-        public static final int composer_buttons_wrapper=0x7f090001;
-        public static final int menu_settings=0x7f09000a;
-        public static final int testTextView=0x7f090000;
+        public static final int cityChooseBtn=0x7f080001;
+        public static final int composer_button_music=0x7f080006;
+        public static final int composer_button_people=0x7f080004;
+        public static final int composer_button_photo=0x7f080003;
+        public static final int composer_button_place=0x7f080005;
+        public static final int composer_button_sleep=0x7f080008;
+        public static final int composer_button_thought=0x7f080007;
+        public static final int composer_buttons_show_hide_button=0x7f080009;
+        public static final int composer_buttons_show_hide_button_icon=0x7f08000a;
+        public static final int composer_buttons_wrapper=0x7f080002;
+        public static final int menu_settings=0x7f08000b;
+        public static final int testTextView=0x7f080000;
     }
     public static final class layout {
         public static final int activity_test=0x7f030000;
         public static final int view_main_layout=0x7f030001;
     }
     public static final class menu {
-        public static final int activity_main=0x7f080000;
+        public static final int activity_main=0x7f070000;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
@@ -67,8 +73,5 @@ public final class R {
         /** activity test string  
          */
         public static final int title_activity_test=0x7f060005;
-    }
-    public static final class style {
-        public static final int AppTheme=0x7f070000;
     }
 }

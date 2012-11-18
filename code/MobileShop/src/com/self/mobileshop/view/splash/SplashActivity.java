@@ -10,10 +10,11 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class SplashActivity extends Activity{
-	
+	private String intentFilter = "com.self.mobileshop.MainActivity.filter";
 	
 	private final static int GOMAIN = 2;
 	Handler mHandler = new Handler(){
+		Thread thread;
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case GOMAIN:
@@ -34,7 +35,7 @@ public class SplashActivity extends Activity{
 	        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		int screenWidth = getWindowManager().getDefaultDisplay().getWidth();
 		int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
-		SplashView spView ; spView = new SplashView(getApplicationContext(),screenWidth, screenHeight,this);
+		SplashView spView = new SplashView(getApplicationContext(),screenWidth, screenHeight,this);
 		setContentView(spView);
 		
 		mHandler.postDelayed(new Runnable() {
@@ -42,10 +43,12 @@ public class SplashActivity extends Activity{
 			public void run() {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+				intent.setAction(intentFilter);
 				startActivity(intent);
 				finish();
 			}
-		}, 2000);
+		}, 2500);
+		
 	}
 	
 	

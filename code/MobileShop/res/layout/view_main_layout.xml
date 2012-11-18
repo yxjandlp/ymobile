@@ -1,8 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" 
-    android:background="@drawable/default_homebg">
-
+    android:background="@drawable/main_background">
+	<RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:background="@color/light_red"
+	    android:padding="5dp"
+	    >
+	    <Button 
+	        android:id="@+id/cityChooseBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/title_bar_button"
+	        android:padding="5dp"
+	        android:text="xiamen"
+	        />
+	    
+	</RelativeLayout>
     <RelativeLayout
         android:id="@+id/composer_buttons_wrapper"
         android:layout_width="fill_parent"
