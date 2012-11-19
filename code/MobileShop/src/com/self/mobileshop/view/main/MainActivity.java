@@ -30,7 +30,6 @@ public class MainActivity extends Activity {
 	private final static int GPS_LOCATION = 222;
 	private final static int APN_LOCATION = 333;
 	
-	private static int tempNum = 1;
 	Button cityChooseBtn;
 	private static MLocation location;
 	private AlertDialog dialog = null;
@@ -51,11 +50,8 @@ public class MainActivity extends Activity {
 
 							public void gpsConnectedTimeOut() {
 								if(location == null){
-									tempNum ++;
-									if(tempNum/2 ==1){
-										mHandler.sendEmptyMessage(APN_LOCATION);
-									}
-									else mHandler.sendEmptyMessage(WIFI_LOCATION);
+									
+									mHandler.sendEmptyMessage(WIFI_LOCATION);
 								}
 							}
 
@@ -73,6 +69,8 @@ public class MainActivity extends Activity {
 				do_wifi();
 				if(location == null){
 					mHandler.sendEmptyMessage(GPS_LOCATION);
+				}else{
+					dialog.dismiss();
 				}
 				break;
 			case APN_LOCATION:
@@ -80,6 +78,7 @@ public class MainActivity extends Activity {
 				if(location == null){
 					if(dialog.isShowing())
 						dialog.dismiss();
+					Toast.makeText(MainActivity.this, "定位失败", Toast.LENGTH_LONG).show();
 					cityChooseBtn.setText(".城市选择.");
 				}
 				break;
@@ -173,7 +172,6 @@ public class MainActivity extends Activity {
 			protected void onPostExecute(MLocation result) {
 				if(location != null){
 					cityChooseBtn.setText(location.City);
-					dialog.dismiss();
 				}
 				super.onPostExecute(result);
 			}
