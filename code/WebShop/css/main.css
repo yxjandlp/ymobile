@@ -21,6 +21,7 @@ a:link,a:visited{color:#0000EE;outline: none;}
 #h_op li a{display:block;font-size:13px;color:white;height:40px;padding:0 5px;text-decoration:none;}
 .c_main{margin-top:20px;}
 .n_bk{height: 50px;line-height: 50px;border-bottom: 1px dotted #d3d3d3}
+/*--- 店辅加盟 ---*/
+.td_r{text-align:right;vertical-align:top;}
 #l-map{height:300px;width:300px;float:left;border-right:2px solid #bcbcbc;}
-#r-result{height:100%;width:20%;float:left;}
 #allmap {width: 400px;height: 300px;overflow: hidden;margin:0;}

@@ -38,22 +38,22 @@ class ServiceFactory
 	}
 	
 	/**
-	 * 获得NiupiService
+	 * 获得CategoryService
 	 * 
-	 * @return NiupiService
+	 * @return CategoryService
 	 */
-	public static function getNiupiService()
+	public static function getCategoryService()
 	{
-        return self::getServiceInstance( 'NiupiService' );
+		return self::getServiceInstance( 'CategoryService' );
 	}
-
-    /**
-     * 获得VoteService
-     *
-     * @return VoteService
-     */
-    public static function getVoteService()
-    {
-        return self::getServiceInstance( 'VoteService' );
-    }
+	
+	/**
+	 * 获得DistrictService
+	 * 
+	 * @return DistrictService
+	 */
+	public static function getDistrictSerice()
+	{
+		return self::getServiceInstance( 'DistrictService' );
+	}
 }

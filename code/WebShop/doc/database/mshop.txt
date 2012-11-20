@@ -9,3 +9,27 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY  (`id`),
   KEY `email` (`email`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+/****店辅分类表*****/
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+/****店辅表******/
+CREATE TABLE IF NOT EXISTS `shop` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL,
+  `intro` text NOT NULL,
+  `contact` varchar(20) NOT NULL,
+  `address_1` varchar(20) NOT NULL,
+  `address_2` varchar(20) NOT NULL,
+  `address_3` varchar(20) NOT NULL,
+  `address_4` varchar(100) NOT NULL,
+  `longitude` float unsigned NOT NULL,
+  `latitude` float unsigned NOT NULL,
+  `category` int(10) unsigned NOT NULL,
+  `ctime` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
