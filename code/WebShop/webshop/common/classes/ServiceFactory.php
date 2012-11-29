@@ -54,6 +54,16 @@ class ServiceFactory
 	 */
 	public static function getDistrictSerice()
 	{
-		return self::getServiceInstance( 'DistrictService' );
+        return self::getServiceInstance( 'DistrictService' );
 	}
+
+    /**
+     * 获得ShopService
+     *
+     * @return ShopService
+     */
+    public static function getShopService()
+    {
+        return self::getServiceInstance( 'ShopService' );
+    }
 }
