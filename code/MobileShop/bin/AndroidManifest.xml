@@ -34,6 +34,7 @@
                 <action android:name="com.self.mobileshop.MainActivity.filter"/>
             </intent-filter>
         </activity>
+        <activity android:name=".view.city.CitySelectActivity"></activity>
         <activity
             android:name="com.test.Test"
             android:label="@string/title_activity_test" >

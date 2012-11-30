@@ -4,33 +4,36 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-public class SideBar extends View {  
+public class SlideBar extends View {  
 	 private char[] l;  
 	    private SectionIndexer sectionIndexter = null;  
 	    private ListView list;  
 	    private TextView mDialogText;
-	    private final int m_nItemHeight = 15;  
-	    public SideBar(Context context) {  
+	    private int m_nItemHeight = 15;  
+	    public SlideBar(Context context) {  
 	        super(context);  
 	        init();  
 	    }  
-	    public SideBar(Context context, AttributeSet attrs) {  
+	    public SlideBar(Context context, AttributeSet attrs) {  
 	        super(context, attrs);  
 	        init();  
+	        Log.d("Slidebar height", getMeasuredHeight() +"   "+ getHeight());
 	    }  
 	    private void init() {  
 	        l = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',  
 	                'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };  
 	    }  
-	    public SideBar(Context context, AttributeSet attrs, int defStyle) {  
+	    public SlideBar(Context context, AttributeSet attrs, int defStyle) {  
 	        super(context, attrs, defStyle); 
 	        init();  
+	        Log.d("Slidebar height", getMeasuredHeight() +"   "+ getHeight());
 	    }  
 	    public void setListView(ListView _list) {  
 	        list = _list;  

@@ -5,11 +5,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.self.mobileshop.entity.City;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.util.Log;
 
 public class DBUtils {
 	private static String DB_PATH = "/data/data/com.self.mobileshop/databases/";
@@ -32,12 +38,8 @@ public class DBUtils {
 		return checkDB != null ? true : false;
 	}
 
-	public static void createDataBase(Context mContext) throws IOException {
-		boolean dbExist = checkDataBase();
-		if (dbExist) {
-			// 数据库已存在
-		} else {
-			// 创建数据库
+	public static void createDataBase(Context mContext) {
+	
 			try {
 				File dir = new File(DB_PATH);
 				if (!dir.exists()) {
@@ -47,13 +49,13 @@ public class DBUtils {
 				if (dbf.exists()) {
 					dbf.delete();
 				}
-				SQLiteDatabase.openOrCreateDatabase(dbf, null);
+//				SQLiteDatabase.openOrCreateDatabase(dbf, null);
 				// 复制asseets中的db文件到DB_PATH下
 				copyDataBase(mContext);
 			} catch (IOException e) {
 				throw new Error("数据库创建失败");
 			}
-		}
+		
 	}
 
 	public static void copyDataBase(Context mContext) throws IOException {
@@ -77,5 +79,31 @@ public class DBUtils {
 		editor.commit();
 	}
 	
+
+	public static List<City> getAllCities(){
+		SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH + DB_NAME, null, Context.MODE_PRIVATE);
+		Cursor cursor = db.query("city", new String[]{"number","name","pinyin"}, null, null, null, null, null);
+		City city;
+		List<City> allCities = new ArrayList<City>();
+		if(cursor != null){
+			Log.d("DBUtils__Cursor", "cursor is not null");
+			cursor.moveToFirst();
+			while(cursor.moveToNext()){
+				city = new City();
+				city.number = cursor.getString(cursor.getColumnIndex("number"));
+				city.name = cursor.getString(cursor.getColumnIndex("name"));
+				city.pinyin = cursor.getString(cursor.getColumnIndex("pinyin"));
+				allCities.add(city);
+			}
+		}
+	
+		
+		if(cursor != null && !cursor.isClosed())
+			cursor.close();
+		if(db != null && db.isOpen()){
+			db.close();
+		}
+		return allCities;
+	}
 	
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,7 @@ import com.self.mobileshop.utils.gps.GpsTaskCallBack;
 import com.self.mobileshop.utils.gps.GpsTask.GpsData;
 import com.self.mobileshop.utils.gps.IAddressTask.MLocation;
 import com.self.mobileshop.utils.view.MyAnimations;
+import com.self.mobileshop.view.city.CitySelectActivity;
 
 public class MainActivity extends Activity {
 	private String TAG = "MainActivity";
@@ -61,9 +63,9 @@ public class MainActivity extends Activity {
 
 						}, 3000);
 				gpstask.execute();
-				if(location == null){
-					mHandler.sendEmptyMessage(WIFI_LOCATION);
-				}
+//				if(location == null){
+//					mHandler.sendEmptyMessage(WIFI_LOCATION);
+//				}
 				break;
 			case WIFI_LOCATION:
 				do_wifi();
@@ -135,11 +137,26 @@ public class MainActivity extends Activity {
 		Log.d(TAG, "begin location");
 		
 		cityChooseBtn = (Button)findViewById(R.id.cityChooseBtn);
-		
-		mHandler.sendEmptyMessage(WIFI_LOCATION);
+		cityChooseBtn.setOnClickListener(clickListeners);
+//		mHandler.sendEmptyMessage(WIFI_LOCATION);
 	}
 
+	public View.OnClickListener clickListeners = new View.OnClickListener() {
+		
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			switch (v.getId()) {
+			case R.id.cityChooseBtn:
+				Intent intent = new Intent(MainActivity.this,CitySelectActivity.class);
+				startActivity(intent);
+				break;
 
+			default:
+				break;
+			}
+		}
+	};
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
